@@ -52,7 +52,7 @@ export const experience = [
 
 export const projects = [
   {
-    name: 'AI API Gateway (AgamiLLM)',
+    name: 'AI API Gateway (LiteLLM)',
     description:
       'Centralized LLM routing system across multiple providers with request management, monitoring, and scalable backend architecture.',
     story: 'Built the AI backbone — intelligent routing across providers.',
