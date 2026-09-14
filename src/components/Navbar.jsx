@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { navLinks } from '../data/content';
+import { navLinks, personalInfo } from '../data/content';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +37,16 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
-  const handleNavClick = () => setMenuOpen(false);
+  const handleNavClick = (e, href) => {
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    setMenuOpen(false);
+  };
 
   return (
     <>
@@ -47,7 +56,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       >
-        <a href="#" className="nav-logo">
+        <a 
+          href="#" 
+          className="nav-logo"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+        >
           LS<span className="accent">.</span>
         </a>
 
@@ -57,11 +73,24 @@ export default function Navbar() {
               <a
                 href={link.href}
                 className={activeSection === link.href ? 'active' : ''}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
             </li>
           ))}
+          {personalInfo.resumeUrl && (
+            <li>
+              <a
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-resume-btn"
+              >
+                Resume
+              </a>
+            </li>
+          )}
         </ul>
 
         <button
@@ -82,10 +111,21 @@ export default function Navbar() {
       {/* Mobile slide-in panel */}
       <div className={`nav-mobile-panel ${menuOpen ? 'open' : ''}`}>
         {navLinks.map((link) => (
-          <a key={link.href} href={link.href} onClick={handleNavClick}>
+          <a key={link.href} href={link.href} onClick={(e) => handleNavClick(e, link.href)}>
             {link.label}
           </a>
         ))}
+        {personalInfo.resumeUrl && (
+          <a
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleNavClick}
+            className="mobile-resume-btn"
+          >
+            Resume ↗
+          </a>
+        )}
       </div>
     </>
   );

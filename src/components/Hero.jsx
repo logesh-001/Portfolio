@@ -9,7 +9,7 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   
-  const words = ['LLMs', 'RAG', 'AI agents'];
+  const words = ['Agentic AI', 'RAG Pipelines', 'LangGraph', 'MCP & AI Gateways'];
   const typingSpeed = 100;
   const deletingSpeed = 50;
   const pauseTime = 2000;
@@ -59,8 +59,36 @@ export default function Hero() {
             <span className="cursor" style={{ visibility: isDeleting ? 'hidden' : 'visible' }}>|</span>
           </p>
           <div className="hero-ctas">
-            <a href="#projects" className="btn btn-primary">View Projects &rarr;</a>
-            <a href="#contact" className="btn btn-ghost">Get in Touch</a>
+            <a 
+              href="#projects" 
+              className="btn btn-primary"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              View Projects &rarr;
+            </a>
+            {personalInfo.resumeUrl && (
+              <a
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary"
+              >
+                Resume ↗
+              </a>
+            )}
+            <a 
+              href="#contact" 
+              className="btn btn-ghost"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Get in Touch
+            </a>
           </div>
         </motion.div>
         

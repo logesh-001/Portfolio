@@ -25,8 +25,9 @@ export default function About() {
           <div className="about-code">
             <span className="keyword">class</span> <span className="class-name">LogeshwaranShanmugam</span>:<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">role</span> = <span className="string">"AI Engineer"</span><br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">focus</span> = [<span className="string">"LLMs"</span>, <span className="string">"RAG"</span>, <span className="string">"AI Agents"</span>]<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">status</span> = <span className="string">"Building the future"</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">location</span> = <span className="string">"Bengaluru, India"</span><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">focus</span> = [<span className="string">"Agentic AI"</span>, <span className="string">"RAG"</span>, <span className="string">"LangGraph"</span>, <span className="string">"MCP"</span>]<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span className="attr">status</span> = <span className="string">"Building intelligent systems"</span>
           </div>
         </motion.div>
         

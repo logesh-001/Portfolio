@@ -29,6 +29,7 @@ export default function Skills() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: (i * 0.1) + (j * 0.05) }}
                   >
+                    {isHighlighted && <span style={{ color: 'var(--accent)', marginRight: '4px' }}>★</span>}
                     {item}
                   </motion.li>
                 );
